@@ -10,11 +10,11 @@ const promise2 = new Promise((resolve, reject) => {
   }, 3000);
 });
 
-const successHandler = () => {
+const successHandler = (message = 'Promise was resolved!') => {
   const messageDiv = document.createElement('div');
 
   messageDiv.className = 'message';
-  messageDiv.textContent = 'Promise was resolved!';
+  messageDiv.textContent = message;
   document.body.appendChild(messageDiv);
 };
 
@@ -27,4 +27,4 @@ const errorHandler = (error) => {
 };
 
 promise1.then(successHandler);
-promise2.catch(errorHandler);
+promise2.then(successHandler).catch(errorHandler);
